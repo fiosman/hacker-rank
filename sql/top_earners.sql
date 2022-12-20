@@ -1,0 +1,1 @@
+SELECT (MONTHS * SALARY) AS earnings, COUNT(employee_id) FROM EMPLOYEE GROUP BY earnings ORDER BY earnings DESC LIMIT 1;
