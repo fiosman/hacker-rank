@@ -1,1 +1,10 @@
-select distinct f1.x,f1.y from functions f1 join functions f2 on f1.x=f2.y and f1.y=f2.x group by f1.x, f1.y HAVING COUNT(f1.X)>1 or f1.X
+SELECT
+    distinct f1.X, f1.Y
+FROM
+    (select *, row_number() over(order by X asc) as id from functions) f1
+INNER JOIN (select *, row_number() over(order by X asc) as id from functions) f2
+    ON f1.Y = f2.X
+    AND f1.X = f2.Y
+WHERE f1.X <= f1.Y
+and f1.id != f2.id
+ORDER BY f1.X asc
