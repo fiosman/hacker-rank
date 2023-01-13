@@ -1,0 +1,1 @@
+select distinct f1.x,f1.y from functions f1 join functions f2 on f1.x=f2.y and f1.y=f2.x group by f1.x, f1.y HAVING COUNT(f1.X)>1 or f1.X
